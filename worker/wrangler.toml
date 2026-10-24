@@ -1,0 +1,6 @@
+name = "clan-hub-proxy"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# The API token is a secret, set with:  npx wrangler secret put COC_TOKEN
+# Never put it in this file.
