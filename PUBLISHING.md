@@ -15,7 +15,7 @@ Project folder: Desktop\clan-hub-companion
 | GitHub repo | mabou798-beep/clan-hub-companion |
 | Support URL | https://mabou798-beep.github.io/clan-hub-companion/ |
 | Privacy URL | https://mabou798-beep.github.io/clan-hub-companion/privacy.html |
-| Team ID | K4PS39S352 |
+| Team ID | 772XL7RUDN (the user's only Apple account, "medo abou"; the master prompt's K4PS39S352 is not on it) |
 | AdMob publisher | ca-app-pub-5383120911029833 (no other publisher ID may ship) |
 | Support email | mabou798@gmail.com |
 | Copyright | 2026 Mohamed Abounachit |
@@ -109,7 +109,10 @@ iPhone-only is set later in App Store Connect.
   close to Supercell's crown marks (Fan Content Policy "similar to logos") / Apple 4.1. User decides.
 - Same artwork used as the Home header banner (assets/images/home_banner.jpg, 240 px tall, fades to the background).
 
-## Phase 6 — GitHub and pages: IN PROGRESS
+## Phase 6 — GitHub and pages: DONE (2026-10-24)
+Repo https://github.com/mabou798-beep/clan-hub-companion (public, main, first commit f24cc28, 123 files, no secrets).
+Pages from main /docs live: /, /privacy.html, /wallpapers.json (CORS *), /style.css, /icon.png all HTTP 200;
+disclaimer and contact email present on the live pages.
 docs/index.html (support), docs/privacy.html, docs/style.css, docs/icon.png, docs/wallpapers.json (empty).
 No gh CLI on this PC → repo is created on github.com. Token check before commit: none in repo.
 
@@ -119,6 +122,17 @@ No gh CLI on this PC → repo is created on github.com. Token check before commi
    full ?width=2400; checked by eye: no logos; WWE crossover and *_logo variants excluded). The screen works once
    GitHub Pages is live. User chose to keep the crown on the icon (2026-10-24).
 3. Phase 7: Apple identifiers/profile, App Store Connect app, Codemagic.
+
+## Phase 7 — Apple, Codemagic, TestFlight: IN PROGRESS (2026-10-24, done by Claude in the user's Chrome)
+- Apple Developer: App ID "Clan Hub" com.mabou.clanhub registered (explicit, no capabilities).
+- Profile "Clan Hub App Store" (App Store type) with certificate "medo abou (Distribution)" 68GR237697,
+  expires 2027/10/02.
+- App Store Connect app "Clan Hub: Stats & Guide", Apple ID 6826481789, en-US, SKU CLANHUB2026, full access.
+  Category Reference saved. Privacy policy URL saved.
+- TestFlight test info: beta description, feedback email, contact Mohamed Abounachit / mabou798@gmail.com,
+  review notes typed; phone number left to the user, then Save.
+- codemagic.yaml written (ios-release + ios-test-ads), not pushed yet.
+- Next: Codemagic add repo, Fetch profiles, push codemagic.yaml, first ios-release build.
 
 ## Standing rules
 - Reply in Darija (Arabic script); Latin values on their own lines.

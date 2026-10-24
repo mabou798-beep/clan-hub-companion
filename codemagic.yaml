@@ -1,0 +1,86 @@
+workflows:
+  ios-release:
+    name: iOS release (real ads)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      app_store_connect: Codemagic
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.mabou.clanhub
+    scripts:
+      - name: Use signing profiles
+        script: xcode-project use-profiles
+      - name: Get packages
+        script: flutter pub get
+      - name: Install pods
+        script: |
+          if [ -f ios/Podfile ]; then
+            cd ios && pod install --repo-update
+          fi
+      - name: Build IPA
+        script: |
+          flutter build ipa --release \
+            --build-name=1.0.0 \
+            --build-number=$PROJECT_BUILD_NUMBER \
+            --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+      email:
+        recipients:
+          - terravisioncontractors@gmail.com
+        notify:
+          success: true
+          failure: true
+
+  # Test ads only. Never ship this build.
+  ios-test-ads:
+    name: iOS test ads (do not ship)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      app_store_connect: Codemagic
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.mabou.clanhub
+    scripts:
+      - name: Use signing profiles
+        script: xcode-project use-profiles
+      - name: Get packages
+        script: flutter pub get
+      - name: Install pods
+        script: |
+          if [ -f ios/Podfile ]; then
+            cd ios && pod install --repo-update
+          fi
+      - name: Build IPA
+        script: |
+          flutter build ipa --release \
+            --build-name=1.0.0 \
+            --build-number=$PROJECT_BUILD_NUMBER \
+            --export-options-plist=/Users/builder/export_options.plist \
+            --dart-define=USE_TEST_ADS=true
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+      email:
+        recipients:
+          - terravisioncontractors@gmail.com
+        notify:
+          success: true
+          failure: true
