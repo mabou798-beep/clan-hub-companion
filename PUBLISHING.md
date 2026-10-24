@@ -163,8 +163,8 @@ puppeteer-core (mobile viewport 402x874 @3x) using the web-only ?tab= / ?open= h
   required, review notes. Saved. "Add for Review" NOT clicked.
 
 ## Final checklist before submission (needs the user)
-1. Decide iPad: binary has TARGETED_DEVICE_FAMILY "1,2" → Apple will want iPad 13" screenshots.
-   Options: set it to "1" (iPhone only) + build #3 and select it, or make iPad screenshots.
+1. DONE: user chose to keep iPad (TARGETED_DEVICE_FAMILY "1,2"). store/screenshots_ipad/01..05 (2064x2752,
+   IHDR/IDAT/IEND only, captured at 1032x1376 @2) uploaded to the "iPad 13-inch" tab and saved.
 2. Install build 2 from TestFlight and check: ATT prompt, banner, native ad, quiz/daily, tag survives restart.
 3. Publish the App Privacy answers (button "Publier").
 4. Then "Add for Review" → "Submit" — only on the user's yes.
