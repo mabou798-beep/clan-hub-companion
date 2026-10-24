@@ -1,6 +1,7 @@
 /// Clan Hub — unofficial companion app for Clash of Clans players.
 library;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +10,9 @@ import 'ads/att.dart';
 import 'screens/home_screen.dart';
 import 'screens/leagues_screen.dart';
 import 'screens/more_screen.dart';
+import 'screens/quiz_screen.dart';
 import 'screens/stats_screen.dart';
+import 'screens/unit_detail_screen.dart';
 import 'screens/units_screen.dart';
 import 'services/api.dart';
 import 'state/catalog_store.dart';
@@ -65,6 +68,30 @@ class _AppShellState extends State<AppShell> {
       await Future<void>.delayed(const Duration(milliseconds: 600));
       await requestTrackingIfNeeded();
       await Ads.init();
+    });
+    if (kIsWeb) _openFromUrl();
+  }
+
+  /// Web preview only: `?tab=1` picks a tab, `?open=daily` or `?open=unit:NAME`
+  /// opens a screen. Used to capture store screenshots.
+  void _openFromUrl() {
+    final q = Uri.base.queryParameters;
+    _tab = (int.tryParse(q['tab'] ?? '') ?? 0).clamp(0, 4);
+    final open = q['open'];
+    if (open == null) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final nav = Navigator.of(context);
+      if (open == 'daily') {
+        nav.push(MaterialPageRoute(builder: (_) => const QuizScreen(daily: true)));
+      } else if (open.startsWith('unit:')) {
+        final cat = context.read<CatalogStore>();
+        while (!cat.isReady && cat.error == null) {
+          await Future<void>.delayed(const Duration(milliseconds: 300));
+        }
+        final name = open.substring(5);
+        final u = cat.all.where((u) => u.name == name).firstOrNull;
+        if (u != null) nav.push(MaterialPageRoute(builder: (_) => UnitDetailScreen(unit: u)));
+      }
     });
   }
 

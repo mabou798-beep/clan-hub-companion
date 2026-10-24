@@ -131,8 +131,11 @@ No gh CLI on this PC → repo is created on github.com. Token check before commi
   Category Reference saved. Privacy policy URL saved.
 - TestFlight test info: beta description, feedback email, contact Mohamed Abounachit / mabou798@gmail.com,
   review notes typed; phone number left to the user, then Save.
-- codemagic.yaml written (ios-release + ios-test-ads), not pushed yet.
-- Next: Codemagic add repo, Fetch profiles, push codemagic.yaml, first ios-release build.
+- Phone number typed by the user; test information saved.
+- codemagic.yaml pushed (commit d351226).
+- Codemagic: app "clan-hub-companion" added (Flutter, personal account, reads codemagic.yaml from main).
+  Profile fetched as reference "clan_hub_app_store"; Codemagic matches it to certificate "TCG Distribution".
+- Next: first ios-release build (needs the user's go), then on-device check (ATT, banner, native, tag persists).
 
 ## Standing rules
 - Reply in Darija (Arabic script); Latin values on their own lines.

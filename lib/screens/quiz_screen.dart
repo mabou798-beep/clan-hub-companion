@@ -166,9 +166,16 @@ class _QuizScreenState extends State<QuizScreen> {
   void _newRound() {
     final cat = context.read<CatalogStore>();
     if (!cat.isReady) {
-      cat.load().then((_) {
+      // The catalogue may already be loading; wait for it to finish rather
+      // than relying on load() (which returns early while busy).
+      void onChange() {
+        if (!cat.isReady && cat.error == null) return;
+        cat.removeListener(onChange);
         if (mounted && cat.isReady) _newRound();
-      });
+      }
+
+      cat.addListener(onChange);
+      cat.load();
       return;
     }
     if (widget.daily && context.read<EngagementStore>().playedToday) {
