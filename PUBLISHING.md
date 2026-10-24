@@ -165,7 +165,14 @@ puppeteer-core (mobile viewport 402x874 @3x) using the web-only ?tab= / ?open= h
   (Mohamed Abounachit, phone copied from the TestFlight form the user filled, mabou798@gmail.com), sign-in not
   required, review notes. Saved. "Add for Review" NOT clicked.
 
-## Final checklist before submission (needs the user)
+## SUBMITTED — 2026-10-24 11:28 (user's yes)
+App Privacy answers published; version 1.0 (build 2) added and sent to App Review. Status: "En attente de
+vérification". Apple says up to 48 hours; result arrives by email.
+
+After approval: in AdMob, "Add store" to link the live App Store listing so real ads start serving
+(until then "Limited ad serving" is expected).
+
+## Final checklist before submission (done)
 1. DONE: user chose to keep iPad (TARGETED_DEVICE_FAMILY "1,2"). store/screenshots_ipad/01..05 (2064x2752,
    IHDR/IDAT/IEND only, captured at 1032x1376 @2) uploaded to the "iPad 13-inch" tab and saved.
 2. Install build 2 from TestFlight and check: ATT prompt, banner, native ad, quiz/daily, tag survives restart.
