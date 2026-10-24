@@ -153,7 +153,10 @@ puppeteer-core (mobile viewport 402x874 @3x) using the web-only ?tab= / ?open= h
 - App information: subtitle "Live Events, Troops & Quiz"; category Reference; content rights = contains
   third-party content with rights; age rating questionnaire → 9+ (all No except Advertising = Yes;
   Cartoon/fantasy violence = Infrequent; step 7 Not applicable, URL empty).
-- Pricing: Free (0.00, base USA), available in all 175 countries on release.
+- Pricing: Free (0.00, base USA). Availability: 172 countries — Morocco, India and Pakistan removed at the
+  user's request (2026-10-24, shown "Non disponible"); all others "available on release".
+- TestFlight: internal group "Internal" (automatic distribution, builds 1 and 2), tester
+  mohamed.abounachit@gmail.com. User confirmed on device: everything works.
 - App Privacy: Yes collect; Coarse location, Device ID, Product interaction, Advertising data — each Third-party
   advertising + Analytics, not linked to identity, used for tracking. Player tag not declared (judgement call:
   stored on device, sent only to fulfil the request). NOT PUBLISHED — needs the user's yes.
