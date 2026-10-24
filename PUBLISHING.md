@@ -135,7 +135,39 @@ No gh CLI on this PC → repo is created on github.com. Token check before commi
 - codemagic.yaml pushed (commit d351226).
 - Codemagic: app "clan-hub-companion" added (Flutter, personal account, reads codemagic.yaml from main).
   Profile fetched as reference "clan_hub_app_store"; Codemagic matches it to certificate "TCG Distribution".
-- Next: first ios-release build (needs the user's go), then on-device check (ATT, banner, native, tag persists).
+- Build #1 (ios-release, d351226): finished in 3m 54s, clan_hub.ipa 25.58 MB, sent to App Store Connect.
+- Bug found while capturing screenshots: opening the quiz while the catalogue was still loading showed
+  "Not enough data" forever. Fixed (quiz listens for the catalogue). Build #2 (c34c09e) started for it.
+- User authorised (2026-10-24, overnight) fixing problems without asking. Still never submit/publish/pay/delete.
+- On-device check still to do by the user: ATT prompt, banner, native ad, tag survives restart.
+
+## Phase 8 — Store page: TEXT + SCREENSHOTS READY
+store/listing.md (research, name, subtitle, keywords, promo, description, captions) and
+store/screenshots/01..05 (1206x2622, RGB, IHDR/IDAT/IEND only). Captured from the release web build with
+puppeteer-core (mobile viewport 402x874 @3x) using the web-only ?tab= / ?open= hook in lib/main.dart.
+
+- Build #2 (c34c09e): built and processed by Apple (build "2"). Only the external TestFlight submit failed with
+  422 "Another build is in review" because build 1 is in beta review — harmless.
+
+## Phase 9 — App Store Connect forms: FILLED, NOT SUBMITTED (2026-10-24, overnight)
+- App information: subtitle "Live Events, Troops & Quiz"; category Reference; content rights = contains
+  third-party content with rights; age rating questionnaire → 9+ (all No except Advertising = Yes;
+  Cartoon/fantasy violence = Infrequent; step 7 Not applicable, URL empty).
+- Pricing: Free (0.00, base USA), available in all 175 countries on release.
+- App Privacy: Yes collect; Coarse location, Device ID, Product interaction, Advertising data — each Third-party
+  advertising + Analytics, not linked to identity, used for tracking. Player tag not declared (judgement call:
+  stored on device, sent only to fulfil the request). NOT PUBLISHED — needs the user's yes.
+- Version 1.0: promo text, description (with "Unofficial" + exact disclaimer), keywords, support URL, copyright,
+  5 screenshots (iPhone Dynamic Island medium tab, uploaded fine), build 2 selected, App Review contact
+  (Mohamed Abounachit, phone copied from the TestFlight form the user filled, mabou798@gmail.com), sign-in not
+  required, review notes. Saved. "Add for Review" NOT clicked.
+
+## Final checklist before submission (needs the user)
+1. Decide iPad: binary has TARGETED_DEVICE_FAMILY "1,2" → Apple will want iPad 13" screenshots.
+   Options: set it to "1" (iPhone only) + build #3 and select it, or make iPad screenshots.
+2. Install build 2 from TestFlight and check: ATT prompt, banner, native ad, quiz/daily, tag survives restart.
+3. Publish the App Privacy answers (button "Publier").
+4. Then "Add for Review" → "Submit" — only on the user's yes.
 
 ## Standing rules
 - Reply in Darija (Arabic script); Latin values on their own lines.
